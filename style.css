@@ -1,0 +1,32 @@
+/* Responsive video */
+video {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Center content vertically and horizontally */
+  .d-flex {
+    display: flex;
+  }
+  
+  .align-items-center {
+    align-items: center;
+  }
+  
+  .justify-content-center {
+    justify-content: center;
+  }
+  
+  /* Responsive text */
+  .card-title h1 {
+    font-size: 2rem;
+    font-family: inherit;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* Adjust font size for smaller screens */
+    .card-title h1 {
+      font-size: 1.5rem;
+    }
+  }
+  
