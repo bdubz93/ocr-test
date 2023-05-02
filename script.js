@@ -1,5 +1,4 @@
 const video = document.querySelector("video");
-const button = document.getElementById("btn");
 const speechText = document.querySelector('[data-text]');
 
 // Set up Tesseract
@@ -20,17 +19,17 @@ navigator.mediaDevices.getUserMedia({ audio: false, video: true })
   });
 
 // Take a picture and process the image using Tesseract
-button.addEventListener("click", () => {
+setInterval(() => {
   // Capture image from the video stream
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  
+
   // Convert the image to a data URL
   const dataUrl = canvas.toDataURL('image/png');
-  
+
   // Process the image using Tesseract
   Tesseract.recognize(dataUrl, 'eng', { logger: m => console.log(m) }).then(({ data: { text } }) => {
     console.log(text);
@@ -40,4 +39,4 @@ button.addEventListener("click", () => {
     const utterance = new SpeechSynthesisUtterance(text);
     synth.speak(utterance);
   });
-});
+}, 1000);
